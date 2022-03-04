@@ -2,7 +2,11 @@ package com.example.calculator.ui.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.calculator.databinding.ActivityMainBinding;
 import com.example.calculator.presenter.Injector;
@@ -21,6 +25,16 @@ public class MainActivity extends AppCompatActivity implements PresenterContact.
         presenterCalculator = Injector.getInstance();
         presenterCalculator.attach(this);
         iniClick();
+        initView();
+    }
+
+    private void initView() {
+        if(isOnline()){
+            Toast.makeText(this,"Доступ к интернету имеется!",Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this,"Доступ к интернету отсутствует!",Toast.LENGTH_LONG).show();
+
+        }
     }
 
     private void iniClick() {
@@ -52,5 +66,11 @@ public class MainActivity extends AppCompatActivity implements PresenterContact.
         binding.txtPrint.setText(a);
     }
 
+    public boolean isOnline(){
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
 
 }

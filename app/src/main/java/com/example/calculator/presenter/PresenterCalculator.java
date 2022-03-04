@@ -1,12 +1,13 @@
 package com.example.calculator.presenter;
 
+
 import com.example.calculator.data.model.CalculateModel;
 
 public class PresenterCalculator implements PresenterContact.Result,
         PresenterContact.Action,
         PresenterContact.NumberAtOhToFour,
         PresenterContact.NumberAtFiveToNine,
-        PresenterContact.Dop {
+        PresenterContact.Dop   {
     private CalculateModel model;
     private PresenterContact.ResultView resultView;
 
@@ -159,4 +160,6 @@ public class PresenterCalculator implements PresenterContact.Result,
         model.dot(number);
         resultView.print(model.getTemp());
     }
+
+
 }
