@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.calculator.R;
 import com.example.calculator.databinding.ActivityMainBinding;
 import com.example.calculator.presenter.Injector;
 import com.example.calculator.presenter.PresenterCalculator;
@@ -25,52 +24,25 @@ public class MainActivity extends AppCompatActivity implements PresenterContact.
     }
 
     private void iniClick() {
-        binding.oh.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberOh(textToCalculate);
-        });
-        binding.one.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberOne(textToCalculate);
-        });
-        binding.two.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberTwo(textToCalculate);
-        });
-        binding.three.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberThree(textToCalculate);
-        });
-        binding.four.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberFour(textToCalculate);
-        });
-        binding.five.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberFive(textToCalculate);
-        });
-        binding.six.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberSix(textToCalculate);
-        });
-        binding.seven.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberSeven(textToCalculate);
-        });
-        binding.eight.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberEight(textToCalculate);
-        });
-        binding.nine.setOnClickListener(view -> {
-            String textToCalculate = binding.txtPrint.getText().toString();
-            presenterCalculator.numberNine(textToCalculate);
-        });
+        binding.oh.setOnClickListener(view -> presenterCalculator.numberOh(binding.txtPrint.getText().toString()));
+        binding.one.setOnClickListener(view -> presenterCalculator.numberOne(binding.txtPrint.getText().toString()));
+        binding.two.setOnClickListener(view -> presenterCalculator.numberTwo(binding.txtPrint.getText().toString()));
+        binding.three.setOnClickListener(view -> presenterCalculator.numberThree(binding.txtPrint.getText().toString()));
+        binding.four.setOnClickListener(view -> presenterCalculator.numberFour(binding.txtPrint.getText().toString()));
+        binding.five.setOnClickListener(view -> presenterCalculator.numberFive(binding.txtPrint.getText().toString()));
+        binding.six.setOnClickListener(view -> presenterCalculator.numberSix(binding.txtPrint.getText().toString()));
+        binding.seven.setOnClickListener(view -> presenterCalculator.numberSeven(binding.txtPrint.getText().toString()));
+        binding.eight.setOnClickListener(view -> presenterCalculator.numberEight(binding.txtPrint.getText().toString()));
+        binding.nine.setOnClickListener(view -> presenterCalculator.numberNine(binding.txtPrint.getText().toString()));
         binding.plus.setOnClickListener(view -> presenterCalculator.increment());
         binding.is.setOnClickListener(view -> presenterCalculator.onResult());
         binding.minus.setOnClickListener(view -> presenterCalculator.decrement());
         binding.Ac.setOnClickListener(view -> presenterCalculator.clear());
         binding.division.setOnClickListener(view -> presenterCalculator.division());
         binding.multiplication.setOnClickListener(view -> presenterCalculator.multiplication());
+        binding.proth.setOnClickListener(view -> presenterCalculator.percent(binding.txtPrint.getText().toString()));
+        binding.plusAndM.setOnClickListener(view -> presenterCalculator.checkPlusOrMinus(binding.txtPrint.getText().toString()));
+        binding.point.setOnClickListener(view -> presenterCalculator.dot(binding.txtPrint.getText().toString()));
     }
 
 

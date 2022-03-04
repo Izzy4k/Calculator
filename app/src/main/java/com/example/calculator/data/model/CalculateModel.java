@@ -22,6 +22,25 @@ public class CalculateModel {
         temp = "0";
     }
 
+    public void checkPlusOrMinus(String number) {
+        if (number.equals("0")) return;
+        if (isOperation) {
+            if (number.contains("-")) {
+                temp = number.substring(1);
+            } else {
+                temp = "-" + number;
+            }
+            second = temp;
+        } else {
+            if (number.contains("-")) {
+                temp = number.substring(1);
+            } else {
+                temp = "-" + number;
+            }
+            first = temp;
+        }
+    }
+
     public void multiplication() {
         if (!first.equals("")) {
             a = Double.parseDouble(first);
@@ -38,12 +57,38 @@ public class CalculateModel {
         }
     }
 
+    public void dot(String number) {
+        if (isOperation) {
+            if (!number.contains(".")) {
+                temp = number + ".";
+            } else {
+                temp = number;
+            }
+            second = temp;
+        } else {
+            if (!number.contains(".")) {
+                temp = number + ".";
+            } else {
+                temp = number;
+            }
+            first = temp;
+        }
+    }
 
     public void decrement() {
         if (!first.equals("")) {
             a = Double.parseDouble(first);
             isOperation = true;
             resultToString = "-";
+        }
+    }
+
+    public void percent(String number) {
+        if (!number.equals("")) {
+            a = Double.parseDouble(number);
+            a /= 100;
+            temp = String.valueOf(a);
+            fastClear();
         }
     }
 
@@ -63,20 +108,20 @@ public class CalculateModel {
             switch (resultToString) {
                 case "+":
                     result = a + b;
-                    temp = String.valueOf(result);
+                    save(result);
                     break;
                 case "-":
                     result = a - b;
-                    temp = String.valueOf(result);
+                    save(result);
                     break;
                 case "x":
                     result = a * b;
-                    temp = String.valueOf(result);
+                    save(result);
                     break;
                 case "/":
                     if (a != 0) {
                         result = a / b;
-                        temp = String.valueOf(result);
+                        save(result);
                     } else {
                         temp = "0";
                     }
@@ -90,6 +135,14 @@ public class CalculateModel {
         first = temp;
         second = "";
         isOperation = false;
+    }
+
+    private void save(double number) {
+        if (number % 1 == 0) {
+            temp = String.valueOf(Math.round(number));
+        } else {
+            temp = String.valueOf(number);
+        }
     }
 
 

@@ -2,7 +2,11 @@ package com.example.calculator.presenter;
 
 import com.example.calculator.data.model.CalculateModel;
 
-public class PresenterCalculator implements PresenterContact.ResultPresenter {
+public class PresenterCalculator implements PresenterContact.Result,
+        PresenterContact.Action,
+        PresenterContact.NumberAtOhToFour,
+        PresenterContact.NumberAtFiveToNine,
+        PresenterContact.Dop {
     private CalculateModel model;
     private PresenterContact.ResultView resultView;
 
@@ -138,4 +142,21 @@ public class PresenterCalculator implements PresenterContact.ResultPresenter {
     }
 
 
+    @Override
+    public void percent(String number) {
+        model.percent(number);
+        resultView.print(model.getTemp());
+    }
+
+    @Override
+    public void checkPlusOrMinus(String number) {
+        model.checkPlusOrMinus(number);
+        resultView.print(model.getTemp());
+    }
+
+    @Override
+    public void dot(String number) {
+        model.dot(number);
+        resultView.print(model.getTemp());
+    }
 }
